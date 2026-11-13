@@ -1,0 +1,102 @@
+/*!
+ * \file concat_d_def.cpp
+ * \brief ConcatD 算子定义
+ */
+#include "register/op_def_registry.h"
+
+namespace ops {
+class ConcatD : public OpDef {
+public:
+    explicit ConcatD(const char* name) : OpDef(name)
+    {
+        this->Input("input_values")
+            .ParamType(DYNAMIC)
+            .DataType({
+                ge::DT_FLOAT16,
+                ge::DT_FLOAT,
+                ge::DT_BF16,
+                ge::DT_INT8,
+                ge::DT_INT16,
+                ge::DT_INT32,
+                ge::DT_INT64,
+                ge::DT_UINT8,
+                ge::DT_UINT16,
+                ge::DT_UINT32,
+                ge::DT_UINT64
+            })
+            .Format({
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND
+            })
+            .UnknownShapeFormat({
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND
+            })
+            .AutoContiguous();
+        this->Output("output_data")
+            .ParamType(REQUIRED)
+            .DataType({
+                ge::DT_FLOAT16,
+                ge::DT_FLOAT,
+                ge::DT_BF16,
+                ge::DT_INT8,
+                ge::DT_INT16,
+                ge::DT_INT32,
+                ge::DT_INT64,
+                ge::DT_UINT8,
+                ge::DT_UINT16,
+                ge::DT_UINT32,
+                ge::DT_UINT64
+            })
+            .Format({
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND
+            })
+            .UnknownShapeFormat({
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND,
+                ge::FORMAT_ND
+            })
+            .AutoContiguous();
+        this->Attr("concat_dim")
+            .Int();
+        this->AICore().AddConfig("ascend910b");
+    }
+};
+OP_ADD(ConcatD);
+} // namespace ops

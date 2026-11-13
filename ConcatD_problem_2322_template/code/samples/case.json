@@ -1,0 +1,67 @@
+{
+  "source_case": "npu_cases[0]",
+  "function": "impl",
+  "attributes": {
+    "concat_dim": 0
+  },
+  "inputs": [
+    {
+      "name": "input_values",
+      "kind": "dynamic",
+      "tensors": [
+        {
+          "file": "input_values_0.bin",
+          "dtype": "float32",
+          "shape": [
+            3
+          ],
+          "bytes": 12,
+          "elements": 3,
+          "range": [
+            -10,
+            10
+          ],
+          "value": null,
+          "value_url": null,
+          "value_sha256": null
+        },
+        {
+          "file": "input_values_1.bin",
+          "dtype": "float32",
+          "shape": [
+            5
+          ],
+          "bytes": 20,
+          "elements": 5,
+          "range": [
+            -10,
+            10
+          ],
+          "value": null,
+          "value_url": null,
+          "value_sha256": null
+        }
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output_data",
+      "kind": "required",
+      "tensors": [
+        {
+          "file": "output_data.bin",
+          "dtype": "float32",
+          "shape": [
+            8
+          ],
+          "bytes": 32,
+          "elements": 8,
+          "rtol": 0.0001,
+          "atol": 0.0001,
+          "tol": 0.0001
+        }
+      ]
+    }
+  ]
+}
